@@ -1,4 +1,4 @@
-// finding max and minumum element in list
+// finding middle element 
 
 class LL {
   
@@ -39,45 +39,46 @@ class LL {
       }
     }
   }
+
+// finding middle element 
+public void middle(){
+  int count=0;
   
-  // finding max element 
-  public void max(){
-    Node pointer = head;
-    int max = 0;
-    if(head==null){
-      System.out.println("list doesnt exist");
-    }
-    else {
-      max=pointer.data;  // for assigning first element as max 
-      while(pointer!=null){
-       if(max<pointer.data){
-         max=pointer.data;
-       }
-       pointer=pointer.next;
-      }
-      System.out.println();
-      System.out.println("max element is = " + max);
-    }
+  Node pointer=head;
+  if(head==null){
+    System.out.println("list is empty");
   }
-  
-  
-  // finding minimum element in list 
-  public void min(){
-      Node pointer = head;
-      int min = pointer.data; // assign first node data in variable
-      if(head==null){
-        System.out.println("list is doesnt exist");
-      }
-      else{
-        while(pointer!=null){
-           if(min>pointer.data){
-             min=pointer.data;
-           }
-           pointer=pointer.next;
-        }
-        System.out.println("Minimum element is = " + min);
-      }
+  else{
+    while(head!=null){
+      head=head.next;
+      count++;
     }
+    
+    if(count%2==0){  // this is use for printing first element from middle by using even list
+      int temp=count/2;
+    for(int i=1;i<temp;i++){
+      pointer=pointer.next;
+    }
+    System.out.println();
+    System.out.println("middle element is = " + pointer.data);
+      
+    }
+    else{
+      int temp=count/2;
+    for(int i=0;i<temp;i++){
+      pointer=pointer.next;
+    }
+    System.out.println();
+    System.out.println("middle element is = " + pointer.data);
+    }
+    
+    
+  }
+}
+  
+  
+  
+  
   
   public static void main (String[]args){
     LL list = new LL();
@@ -86,8 +87,11 @@ class LL {
     list.add(3);
     list.add(4);
     list.add(5);
+    list.add(6);
+    list.add(7);
+    list.add(9);
     list.get();
-    list.max();
-    list.min();
+    list.middle();
+    
   }
 }
